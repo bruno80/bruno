@@ -15,7 +15,7 @@ export class HomePage {
 
   contatos;
 
-  constructor(public modalController: ModalController, private storage: Storage, private http: HttpClient, public loadingController: LoadingController, public service:ServiceService) {
+  constructor(public modalController: ModalController, private storage: Storage, private http: HttpClient, public loadingController: LoadingController, public service: ServiceService) {
     this.loadingController.create({
       message: "Carregando"
     }).then((loader) => {
@@ -31,7 +31,7 @@ export class HomePage {
 
   add(contato) {
     this.loadingController.create({
-      message:"Carregando"
+      message: "Carregando"
     }).then((loader) => {
       loader.present()
       this.service.post(contato).subscribe(
@@ -44,20 +44,26 @@ export class HomePage {
     })
   }
 
-  remove(contato) {
+  delete(contato) {
     this.loadingController.create({
-      message:"Carregando"
+      message: "Carregando"
     }).then((loader) => {
-      loader.present()
+      loader.present();
       this.service.delete(contato.id).subscribe(
         (data) => {
-          var i = this.contatos.indexOf(contato);
-          this.contatos.splice(i, 1);
-          this.storage.set('contato', this.contatos)
           loader.dismiss()
         }
       )
     })
+  }
+
+  like(contato) {
+    contato.like += 1
+    this.service.like(contato.id, contato).subscribe(
+      (data) => {
+      
+      }
+    )
   }
 
   async modal() {
@@ -71,9 +77,6 @@ export class HomePage {
     })
   }
 
-  like(contato) {
-    contato.like = contato.like + 1
-  }
 
 
 

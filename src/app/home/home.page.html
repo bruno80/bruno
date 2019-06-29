@@ -29,6 +29,7 @@
         <ion-item>
           <ion-icon name="heart" slot="start" (click)="like(contato)"></ion-icon>
           <ion-badge color="dark" slot="end">{{contato.like}}</ion-badge>
+          <ion-icon name="trash" slot="end" (click)="delete(contato)"></ion-icon>
         </ion-item>
 
       </ion-card>
