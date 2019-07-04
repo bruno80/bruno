@@ -51,6 +51,8 @@ export class HomePage {
       loader.present();
       this.service.delete(contato.id).subscribe(
         (data) => {
+          var i = this.contatos.indexOf(contato);
+          this.contatos.splice(i, 1);
           loader.dismiss()
         }
       )
@@ -61,7 +63,7 @@ export class HomePage {
     contato.like += 1
     this.service.like(contato.id, contato).subscribe(
       (data) => {
-      
+
       }
     )
   }

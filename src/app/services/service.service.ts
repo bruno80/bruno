@@ -17,8 +17,8 @@ export class ServiceService {
     return this.http.post("http://5d14083876f3f5001415f48f.mockapi.io/perfil/", contato)
   }
 
-  delete(contato){
-    return this.http.delete("http://5d14083876f3f5001415f48f.mockapi.io/perfil/", contato)
+  delete(id){
+    return this.http.delete("http://5d14083876f3f5001415f48f.mockapi.io/perfil/" + id)
   }
 
   like(id, contato){
